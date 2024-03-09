@@ -2,6 +2,7 @@
 #include<string>
 #include<algorithm>
 #include <vector>
+#include <stdio.h>
 
 using namespace std;
 
@@ -31,8 +32,8 @@ vector<Scores> maxscore_rows(40000);
 void sort_maxscore() {
     // 潜在的なスコアの高い順に作物番号を並び変える
     for (int i = 0; i < K; i++) {
-        maxscore_rows[i].ex_pos = i;
-        maxscore_rows[i].num = SD[i][1] - SD[i][0];
+        maxscore_rows[i].ex_pos = i + 1; // 作物番号
+        maxscore_rows[i].num = SD[i][1] - SD[i][0] + 1;
         // テストコード
         //cout << maxscore_rows[i].num << endl;
     }
@@ -66,5 +67,7 @@ int main() {
     sort_maxscore();
 
     cout << 1 << endl;
-    cout << maxscore_rows[0].ex_pos + 1 << " 0 0 1";
+    cout << to_string(maxscore_rows[0].ex_pos) << " " << to_string(i0) << " 0 1" << endl;
+
+    return 0;
 }
